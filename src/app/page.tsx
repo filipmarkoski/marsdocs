@@ -1,3 +1,4 @@
+import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 import { CreatePost } from "~/app/_components/create-post";
@@ -36,6 +37,14 @@ export default async function Home() {
             </div>
           </Link>
         </div>
+
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-2xl text-white">
+            <UserButton />
+          </p>
+        </div>
+
+
         <div className="flex flex-col items-center gap-2">
           <p className="text-2xl text-white">
             {hello ? hello.greeting : "Loading tRPC query..."}
