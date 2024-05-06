@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
-import { Post } from "~/server/db/types";
+import { type Post } from "~/server/db/types";
 import { posts } from "~/server/db/schema";
 
 export const postRouter = createTRPCRouter({

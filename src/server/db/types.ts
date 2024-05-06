@@ -12,10 +12,12 @@
 //     nameIndex: index("name_idx").on(example.name),
 //   })
 // );
-
+             
 export type Post = {
     id: number;
-    name: string;
-    createdAt: number;
-    updatedAt: number;
+    title: string;
+    body: string;
+    userId: number;
+    tags: string[];
+    reactions: number;
 };

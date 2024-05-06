@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { ClerkProvider } from "@clerk/nextjs";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,6 +17,8 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+const queryClient = new QueryClient();
+
 export default function RootLayout({
   children,
 }: {
@@ -23,11 +26,13 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={`font-sans ${inter.variable}`}>
-          <TRPCReactProvider>{children}</TRPCReactProvider>
-        </body>
-      </html>
+      <QueryClientProvider client={queryClient}>
+        <html lang="en">
+          <body className={`font-sans ${inter.variable}`}>
+            <TRPCReactProvider>{children}</TRPCReactProvider>
+          </body>
+        </html>
+      </QueryClientProvider>
     </ClerkProvider>
   );
 }
